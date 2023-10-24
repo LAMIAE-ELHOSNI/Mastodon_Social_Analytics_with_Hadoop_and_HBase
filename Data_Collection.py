@@ -18,10 +18,7 @@ def datetime_encoder(obj):
     raise TypeError(f"Type {type(obj)} is not JSON serializable")
 
 json_str = json.dumps(results, default=datetime_encoder)
-# json_obj = json.loads(json_str)
-# print(type(json_obj))
 
-# Encode the JSON string as bytes
 json_bytes = json_str.encode('utf-8')
 
 with open("mastadon_data.json", "w") as outfile:
@@ -29,7 +26,7 @@ with open("mastadon_data.json", "w") as outfile:
 
 
 #  define location
-hdfs_destination_path = '/data/mastadon_data..json'
+hdfs_destination_path = '/data/mastodon_data.json'
 
 # Create an HDFS client
 hdfs_client = InsecureClient('http://localhost:9870/', user='hadoop')
